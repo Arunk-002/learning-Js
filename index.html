@@ -7,9 +7,28 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
 </head>
-<body>       
-    <h1 id="heading">Hello World</h1> 
-    <h2 class="head">Hi</h2> 
+<style>
+    .night{
+        background-color: black;
+        color: white;
+    }
+</style>
+<body>
+    <div id="m-div" class="main">
+        <div class="child">
+            HI iam a child div
+        </div>
+        <h1 id="heading" style="color: aquamarine; border: 2px solid red;">Hello World</h1> 
+        <h2 class="head">Hi</h2> 
+        <button onclick="changeBg()">change bg</button>
+        <button onclick="removeBg()">remove bg</button>
+        <ul id="myList">
+            <li>Coffee</li>
+            <li>Tea</li>
+            <li>Milk</li>
+        </ul>
+    </div>       
     <script src='domManipulation.js'></script>
+
 </body>
 </html>
