@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Event Handling</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <style>
+        section{
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+        }
+        .red{
+            background-color: red;
+        }
+        .blue{
+            background-color: blue;
+        }
+        .green{
+            background-color: green;
+        }
+        .box{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: dodgerblue;
+            transition: width 1s ease-in;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div onmouseover="colorChange(this)"  onmouseout="colorRevert(this,'red')" class="cl red"></div>
+        <!-- onmouseover tiggers when the cursor is hovered over the element on which it's called. -->
+        <!-- onmouseout tiggers when the cursor is hovered out of the element on which it's called. -->
+        <div onmouseover="colorChange(this)" onmouseout="colorRevert(this,'green')" class="cl green"></div>
+        <div onmouseover="colorChange(this)" onmouseout="colorRevert(this,'blue')" class="cl blue"></div>
+        
+    </section>
+    <section>
+        <select id="mySelect" onchange="eleChange(this)">
+        <!-- onchange is triggered when the value of specified html element is changed -->
+            <option value="Audi">Audi</option>
+            <option value="BMW">BMW</option>
+            <option value="Mercedes">Mercedes</option>
+            <option value="Volvo">Volvo</option>
+          </select>
+    </section>
+    <section>
+        <div class="box" onclick="clikChanger(this)">
+        <!-- onclick is trigered when the specified element is clicked -->
+            Click Me
+        </div>
+    </section>
+    <section>
+        <input type="text" width="200px" height="50px" style="border:3px solid grey;" onkeydown="keyChange(this)">
+        <!-- onkeydown is trigered when a key is pressed in the keyboard  -->
+        <p id="txt">You'r words are:</p>
+    </section>
+    <section>
+        <img src="https://images.pexels.com/photos/26082377/pexels-photo-26082377/free-photo-of-alone-monkey.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+         alt="image" onload="window.alert('image loaded')">
+        <!-- onload is triggered when a the window or element is loaded on the wwebsite -->
+    </section>
+    <section>
+        <ul id="myList">
+            <li>Coffee</li>
+            <li>Tea</li>
+            <li>Milk</li>
+          </ul>
+    </section>
+
+
+
+    <script>
+        const myList= document.getElementById("myList");
+        myList.addEventListener("mouseover", function (e){
+            const target = e.target;
+            if(target.matches("li")){
+                target.style.backgroundColor="grey"
+            }
+            console.log(j.target)
+        })
+        function colorChange(div){
+            div.style.backgroundColor="black"
+        }
+        function colorRevert(div,clr){
+            div.style.backgroundColor=clr
+        }
+        function eleChange(obj){
+            window.alert(`you have selected : ${obj.value}`)
+        }
+        function clikChanger(div){
+            div.style.width="300px"
+        }
+        const txt=document.getElementById("txt");
+        function keyChange(div){
+            txt.innerText+=div.value
+            document.append(txt)
+        }
+
+    </script>
+
+</body>
+</html>

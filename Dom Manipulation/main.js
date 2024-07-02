@@ -50,4 +50,7 @@ console.log(cDiv.textContent)
 
 // -----------------------------------------------------------------------------
 const listItem=document.getElementById("myList");
-// listItem.
+const liNd=document.createElement("li")
+liNd.appendChild(document.createTextNode("Cappucino"));
+listItem.appendChild(liNd)
+console.log(listItem.removeChild(listItem.children[1]))
