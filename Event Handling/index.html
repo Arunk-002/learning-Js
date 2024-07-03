@@ -32,6 +32,12 @@
             background-color: dodgerblue;
             transition: width 1s ease-in;
         }
+        .ball{
+            width: 100px;
+            height:100px;
+            border-radius: 50%;
+            background-color: rgb(78, 195, 78);
+        }
     </style>
 </head>
 <body>
@@ -41,6 +47,7 @@
         <!-- onmouseout tiggers when the cursor is hovered out of the element on which it's called. -->
         <div onmouseover="colorChange(this)" onmouseout="colorRevert(this,'green')" class="cl green"></div>
         <div onmouseover="colorChange(this)" onmouseout="colorRevert(this,'blue')" class="cl blue"></div>
+        <button class="btn">Button</button>
         
     </section>
     <section>
@@ -51,42 +58,48 @@
             <option value="Mercedes">Mercedes</option>
             <option value="Volvo">Volvo</option>
           </select>
+          <button class="btn">Button</button>
     </section>
     <section>
         <div class="box" onclick="clikChanger(this)">
         <!-- onclick is trigered when the specified element is clicked -->
             Click Me
         </div>
+        <button class="btn">Button</button>
     </section>
     <section>
         <input type="text" width="200px" height="50px" style="border:3px solid grey;" onkeydown="keyChange(this)">
         <!-- onkeydown is trigered when a key is pressed in the keyboard  -->
         <p id="txt">You'r words are:</p>
+        <button class="btn">Button</button>
     </section>
     <section>
         <img src="https://images.pexels.com/photos/26082377/pexels-photo-26082377/free-photo-of-alone-monkey.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
          alt="image" onload="window.alert('image loaded')">
-        <!-- onload is triggered when a the window or element is loaded on the wwebsite -->
+        <!-- onload is triggered when a the window or element is loaded on the  website -->
     </section>
     <section>
         <ul id="myList">
-            <li>Coffee</li>
-            <li>Tea</li>
-            <li>Milk</li>
+            <li id="coffe">Coffee</li>
+            <li id="Tea">Tea</li>
+            <li id="Milk">Milk</li>
           </ul>
+          <button class="btn">Button</button>
+          <a id="link" href="www.google.com">click  me</a>
+    </section>
+    <section>
+        <div id="ball" class="ball"></div>
     </section>
 
-
-
     <script>
-        const myList= document.getElementById("myList");
-        myList.addEventListener("mouseover", function (e){
-            const target = e.target;
-            if(target.matches("li")){
-                target.style.backgroundColor="grey"
+        // Event delegation 
+        const myList=document.getElementById("myList");
+        myList.addEventListener('click',(e)=>{
+            if(e.target.id =="Tea"){
+                console.log("You have clicked Tea")
             }
-            console.log(j.target)
         })
+        // -------------------------------
         function colorChange(div){
             div.style.backgroundColor="black"
         }
@@ -104,7 +117,28 @@
             txt.innerText+=div.value
             document.append(txt)
         }
-
+        // -----------------exercise--------
+        const link = document.getElementById("link");
+        link.addEventListener("click",(e)=>{
+            e.preventDefault()
+        })
+        const btnBody=document.body;
+        btnBody.addEventListener("click",(e)=>{
+            if(e.target.className == "btn"){
+                console.log('You have clicked a btn');
+            }
+        })
+        const ball = document.getElementById("ball");
+        let xpos=0;
+        function move(){
+            let start= document.body.clientWidth-1000;
+            xpos+=2;
+            ball.style.transform = `translateX(${xpos}px)`;
+            if(xpos<start){
+                requestAnimationFrame(move)
+            }
+        }
+        window.requestAnimationFrame(move())
     </script>
 
 </body>
