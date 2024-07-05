@@ -1,11 +1,47 @@
+// -----------------------callbacks-----------------
 
-function alertValue(e){
-    if(e.key === "A"){
-        window.alert(`You have entered ${inp.value}`);
-    }
+// function greet(name, callback) {
+//     console.log(`Hello, ${name}!`);
+//     callback();
+// }
+
+// function sayGoodbye() {
+//     console.log("Goodbye!");
+// }
+
+// greet("John Doe", sayGoodbye);
+
+function walk(callback){
+    setTimeout(()=>{
+        console.log('Walked');
+        callback();
+    },2000)
 }
-function fetchValue(alertValue){
-    let inp=document.getElementById("inp");
-    inp.addEventListener("keydown",alertValue(e))
+function eat(callback){
+    setTimeout(()=>{
+        console.log("finished eating");
+        callback();
+    },1500)
 }
-fetchValue(alertValue);
+function sleep(callback){
+    setTimeout(()=>{
+        callback();
+        console.log("sleeped"); 
+    },2500)
+}
+//Normal way
+
+// walk();
+// eat();
+// sleep();
+
+//order not okay
+
+//using callbacks
+walk(()=>{
+    eat(()=>{
+        sleep(()=>{  
+        })
+    })
+})
+
