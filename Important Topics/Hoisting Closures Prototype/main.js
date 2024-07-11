@@ -82,4 +82,36 @@ x();
 
 console.log("-------------------------------------------------------------------------------------------------------------------------------------")
 
+// Prototype
 
+console.log("Prototype------------------------------------");
+
+// So Prototype is an object that is attached to the all the functions and objects in js. In js basically everything is an  object.
+// For example:
+
+let obj={
+    name:"arun",
+    place:"malappuram",
+    objDisplay(){
+        console.log(this.name," is from ",this.place);
+    }
+}
+
+console.log(obj);// This will log all the attributes of the obj into the console.
+// In the end there will be something called "Prototype". When we try to log that we will get all the methods available to the obj.
+console.log(obj.__proto__);
+// So this is also an obj. Now let us log the prototype of this:
+console.log(obj.__proto__.__proto__);
+// Now you can see it will return null because there is nothing fundemental than object in js.
+// So this way linking an prototype inside another till it reaches an object itself is called Prototypal Chain. This is true in case of array and 
+// everything in js.
+// There are methods through which we can change the protoype or set additional methods to one.
+// For example:
+Object.prototype.addedFunction = function() {
+    console.log("This is a new function added to the prototype.")
+}
+
+Object.addedFunction();
+obj.addedFunction();
+
+// Now as you can see you can add functions to the prototype and now all the objects created can acces  this function.
